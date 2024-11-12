@@ -41,5 +41,17 @@ auc = roc_auc_score(y, pred_prob)
 print(f"AUC = {auc:.4f}")
 
 ######################################################################
+# XGBoost - different interface 
+######################################################################
+
+bst = xgb.XGBClassifier(objective = 'binary:logistic')
+bst.fit(x, y)
+pred_label = bst.predict(x)
+pred_prob2 = bst.predict_proba(x)[:, 1]
+
+auc2 = roc_auc_score(y, pred_prob2)
+print(f"AUC = {auc:.4f}")
+
+######################################################################
 # THE END
 ######################################################################
